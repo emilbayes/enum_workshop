@@ -13,12 +13,9 @@ defmodule EnumWorkshop do
     4
   """
   @spec count(list) :: [Any]
-  def count([_head|tail]) do
-    count(tail) + 1
-  end
-  def count([]) do
-    0
-  end
+  def count([_head|tail]), do: count(tail) + 1
+
+  def count([]), do: 0
 
   @doc """
   reimplement the functionality of `Enum.member?/1` without using the
@@ -44,9 +41,7 @@ defmodule EnumWorkshop do
     end
   end
 
-  def member?([], _n) do
-    false
-  end
+  def member?([], _n), do: false
 
   @doc """
   reimplement the functionality of `Enum.reverse/1` without using the
@@ -62,14 +57,9 @@ defmodule EnumWorkshop do
     [1, 2, 1]
   """
   @spec reverse(list) :: [Any]
-  def reverse([head|tail]) do
-    # What's the difference between | and ++
-    reverse(tail) ++ [head]
-  end
+  def reverse([head|tail]), do: reverse(tail) ++ [head]
 
-  def reverse([]) do
-    []
-  end
+  def reverse([]), do: []
 
   @doc """
   reimplement the functionality of `Enum.min/1` without using the
