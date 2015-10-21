@@ -37,8 +37,15 @@ defmodule EnumWorkshop do
     false
   """
   @spec member?(list, Any) :: Boolean
-  def member?(list, n) do
-    Enum.member? list, n # replace with your own implementation
+  def member?([head|tail], n) do
+    case head do
+      ^n -> true
+      _ -> member?(tail, n)
+    end
+  end
+
+  def member?([], _n) do
+    false
   end
 
   @doc """
