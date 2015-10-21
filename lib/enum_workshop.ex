@@ -62,8 +62,13 @@ defmodule EnumWorkshop do
     [1, 2, 1]
   """
   @spec reverse(list) :: [Any]
-  def reverse(list) do
-    Enum.reverse list # replace with your own implementation
+  def reverse([head|tail]) do
+    # What's the difference between | and ++
+    reverse(tail) ++ [head]
+  end
+
+  def reverse([]) do
+    []
   end
 
   @doc """
