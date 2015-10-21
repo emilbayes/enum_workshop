@@ -100,9 +100,14 @@ defmodule EnumWorkshop do
     [1, 3, 5]
   """
   @spec filter(list, function) :: [Any]
-  def filter(list, fun) do
-    Enum.filter list, fun # replace with your own implementation
+  def filter([head|tail], fun) do
+    case fun.(head) do
+      true -> [head | filter(tail, fun)]
+      _ -> filter(tail, fun)
+    end
   end
+
+  def filter([], _fun), do: []
 
   @doc """
   reimplement the functionality of `Enum.dedup/1` without using the
