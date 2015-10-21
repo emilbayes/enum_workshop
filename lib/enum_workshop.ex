@@ -75,9 +75,16 @@ defmodule EnumWorkshop do
     3
   """
   @spec min([Integer]) :: Integer
-  def min(list) do
-    Enum.min list # replace with your own implementation
+  def min([head|tail]), do: do_min(tail, head)
+
+  defp do_min([head|tail], cur_min) do
+    case head < cur_min do
+      true -> do_min(tail, head)
+      _ -> do_min(tail, cur_min)
+    end
   end
+
+  defp do_min([], cur_min), do: cur_min
 
   @doc """
   reimplement the functionality of `Enum.filter/2` without using the
