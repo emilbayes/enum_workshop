@@ -13,8 +13,11 @@ defmodule EnumWorkshop do
     4
   """
   @spec count(list) :: [Any]
-  def count(list) do
-    Enum.count list # replace with your own implementation
+  def count([_head|tail]) do
+    count(tail) + 1
+  end
+  def count([]) do
+    0
   end
 
   @doc """
